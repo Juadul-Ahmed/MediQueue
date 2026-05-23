@@ -1,9 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { Link, Button } from "@heroui/react";
+import {
+  Link,
+  Button,
+  Avatar,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 export default function AppNavbar() {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  console.log(user);
+
+  const handleLogout = async () => {
+    await authClient.signOut();
+  };
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -45,17 +62,32 @@ export default function AppNavbar() {
           </li>
         </ul>
 
-        <div className="hidden sm:flex flex gap-4">
-          <Link href="/login">
-            <Button color="primary" variant="outline">
-              Login
-            </Button>
-          </Link>
+        {user ? (
+          <>
+            <Avatar>
+              <Avatar.Image alt="John Doe" src={user?.image} />
+              <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
+            </Avatar>
 
-          <Link href="/register">
-            <Button variant="danger">Register</Button>
-          </Link>
-        </div>
+            <Button onClick={handleLogout} variant="danger">
+              Logout
+            </Button>
+          </>
+        ) : (
+          <>
+            <div className="hidden sm:flex flex gap-4">
+              <Link href="/login">
+                <Button color="primary" variant="outline">
+                  Login
+                </Button>
+              </Link>
+
+              <Link href="/register">
+                <Button variant="danger">Register</Button>
+              </Link>
+            </div>
+          </>
+        )}
 
         <button
           className="sm:hidden p-2"
@@ -83,14 +115,18 @@ export default function AppNavbar() {
             <Link href="/my-booked-sessions">My Booked Sessions</Link>
           </li>
           <li>
-            <Button color="primary" href="/login" variant="outline" fullWidth>
-              Login
-            </Button>
+            <Link href="/login">
+              <Button variant="outline" className={""}>
+                Login
+              </Button>
+            </Link>
           </li>
           <li>
-            <Button color="primary" href="/register" variant="danger" fullWidth>
-              Register
-            </Button>
+            <Link href="/register">
+              <Button color="primary" href="" variant="danger" fullWidth>
+                Register
+              </Button>
+            </Link>
           </li>
         </ul>
       )}
