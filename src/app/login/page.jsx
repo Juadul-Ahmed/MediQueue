@@ -16,7 +16,7 @@ import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 
-const RegisterPage = () => {
+const LoginPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -25,15 +25,14 @@ const RegisterPage = () => {
     const user = Object.fromEntries(formData.entries());
     console.log(user);
     
-    const { data, error } = await authClient.signUp.email({
+    const { data, error } = await authClient.signIn.email({
       email: user?.email,
-      name: user?.name,
       password: user?.password,
-      image: user?.image
     })
+    console.log({data,error});
     
     if(data) {
-      redirect('/login')
+      redirect('/')
     }
     if(error){
       toast.error("wrong credentials")
@@ -89,46 +88,18 @@ const RegisterPage = () => {
 
               <div className="mb-8">
                 <h2 className="text-4xl font-black text-slate-900">
-                  Create Account
+                  Login Account
                 </h2>
 
                 <p className="text-slate-500 mt-2">
-                  Register to get started with your tutoring journey.
+                  Login to get started with your tutoring journey.
                 </p>
               </div>
 
               <Form onSubmit={onSubmit} className="flex flex-col gap-5">
 
              
-                <TextField
-                  isRequired
-                  name="name"
-                  type="text"
-                >
-                  <Label>Name</Label>
-
-                  <Input
-                    className="rounded-xl"
-                    placeholder="Your Name"
-                  />
-
-                  <FieldError />
-                </TextField>
-
-              
-                <TextField
-                  name="image"
-                  type="url"
-                >
-                  <Label>Image URL</Label>
-
-                  <Input
-                    className="rounded-xl"
-                    placeholder="Paste your image url"
-                  />
-
-                  <FieldError />
-                </TextField>
+                
 
            
                 <TextField
@@ -196,7 +167,7 @@ const RegisterPage = () => {
                   type="submit"
                   className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold h-12 rounded-xl mt-2"
                 >
-                  Get Started
+                  Login
                 </Button>
 
                 <p className="text-center text-slate-500 text-sm mt-2">
@@ -218,4 +189,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
