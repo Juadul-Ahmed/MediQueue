@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
 import { MapPin, BookOpen, DollarSign } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@heroui/react';
 
 const TutorCard = ({ tutor }) => {
-  const { tutorName, photoUrl, subject, hourlyFee, location } = tutor;
+  const {_id, tutorName, photoUrl, subject, hourlyFee, location } = tutor;
 
   return (
     <div className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
@@ -36,9 +38,10 @@ const TutorCard = ({ tutor }) => {
           </div>
         </div>
 
-        <button className="w-full mt-6 bg-slate-900 text-white py-2 rounded-xl font-semibold hover:bg-red-600 transition-colors">
-          View Profile
-        </button>
+        <Link href={`tutors/${_id}`}>
+           <Button className={"w-full mt-6 bg-slate-900 text-white py-2 rounded-xl font-semibold hover:bg-red-600 transition-colors"} >View Profile</Button>
+        </Link>
+        
       </div>
     </div>
   );
