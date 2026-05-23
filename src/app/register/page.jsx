@@ -12,16 +12,25 @@ import {
   TextField,
   Description,
 } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 const RegisterPage = () => {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
 
     const user = Object.fromEntries(formData.entries());
-
     console.log(user);
+    
+    const { data, error } = await authClient.signUp.email({
+      email: user?.email,
+      name: user?.name,
+      password: user?.password,
+      image: user?.image
+    })
+    console.log({data,error});
+    
   };
 
   return (
