@@ -15,8 +15,10 @@ import {
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
+import { GrGoogle } from "react-icons/gr";
 
 const LoginPage = () => {
+  
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -24,30 +26,30 @@ const LoginPage = () => {
 
     const user = Object.fromEntries(formData.entries());
     console.log(user);
-    
+
     const { data, error } = await authClient.signIn.email({
       email: user?.email,
       password: user?.password,
-    })
-    console.log({data,error});
-    
-    if(data) {
-      redirect('/')
-    }
-    if(error){
-      toast.error("wrong credentials")
-    }
-    toast.success("Registration was successful")
-  };
+    });
+    console.log({ data, error });
 
+    if (data) {
+      redirect("/");
+    }
+    if (error) {
+      toast.error("wrong credentials");
+    }
+    toast.success("Registration was successful");
+  };
+   const handleGoogleSignin = async () => {
+      await authClient.signIn.social({
+        provider: "google",
+      });
+    };
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
-
       <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
-
-      
         <div className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-red-600 to-red-500 text-white p-14 relative overflow-hidden">
-
           <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-72 h-72 bg-black/10 rounded-full blur-3xl" />
 
@@ -80,12 +82,9 @@ const LoginPage = () => {
           </div>
         </div>
 
-   
         <div className="flex items-center justify-center p-8 md:p-14">
-
           <Card className="w-full shadow-none border-none">
             <Card>
-
               <div className="mb-8">
                 <h2 className="text-4xl font-black text-slate-900">
                   Login Account
@@ -97,11 +96,6 @@ const LoginPage = () => {
               </div>
 
               <Form onSubmit={onSubmit} className="flex flex-col gap-5">
-
-             
-                
-
-           
                 <TextField
                   isRequired
                   name="email"
@@ -126,7 +120,6 @@ const LoginPage = () => {
                   <FieldError />
                 </TextField>
 
-               
                 <TextField
                   isRequired
                   minLength={8}
@@ -162,7 +155,6 @@ const LoginPage = () => {
                   <FieldError />
                 </TextField>
 
-               
                 <Button
                   type="submit"
                   className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold h-12 rounded-xl mt-2"
@@ -170,15 +162,25 @@ const LoginPage = () => {
                   Login
                 </Button>
 
-                <p className="text-center text-slate-500 text-sm mt-2">
-                  Already have an account?{" "}
+                 <Button
+                    onClick={handleGoogleSignin}
+                    variant="outline"
+                    className={
+                      "w-full bg-base-600 hover:bg-red-700 hover:text-white text-black font-semibold h-12 rounded-xl mt-2"
+                    }
+                  >
+                    Login with Google <GrGoogle />
+                  </Button>
 
+                <p className="text-center text-slate-500 text-sm mt-2">
+                  Don't have an account?{" "}
                   <Link
-                    href="/login"
+                    href="/register"
                     className="text-red-600 font-semibold hover:underline"
                   >
-                    Login
+                    Register
                   </Link>
+                 
                 </p>
               </Form>
             </Card>

@@ -61,7 +61,8 @@ export default function AppNavbar() {
         {user ? (
           <>
             <Avatar>
-              <Avatar.Image alt="John Doe" src={user?.image} />
+
+              <Avatar.Image referrerPolicy="no-referrer" alt="John Doe" src={user?.image} />
               <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
             </Avatar>
 

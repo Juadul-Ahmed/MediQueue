@@ -15,6 +15,7 @@ import {
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
+import { GrGoogle } from "react-icons/gr";
 
 const RegisterPage = () => {
   const onSubmit = async (e) => {
@@ -24,31 +25,33 @@ const RegisterPage = () => {
 
     const user = Object.fromEntries(formData.entries());
     console.log(user);
-    
+
     const { data, error } = await authClient.signUp.email({
       email: user?.email,
       name: user?.name,
       password: user?.password,
-      image: user?.image
-    })
-    
-    if(data) {
-      redirect('/login')
+      image: user?.image,
+    });
+
+    if (data) {
+      redirect("/login");
     }
-    if(error){
-      toast.error("wrong credentials")
+    if (error) {
+      toast.error("wrong credentials");
     }
-    toast.success("Registration was successful")
+    toast.success("Registration was successful");
+  };
+
+  const handleGoogleSignin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
-
       <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
-
-      
         <div className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-red-600 to-red-500 text-white p-14 relative overflow-hidden">
-
           <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-72 h-72 bg-black/10 rounded-full blur-3xl" />
 
@@ -81,12 +84,9 @@ const RegisterPage = () => {
           </div>
         </div>
 
-   
         <div className="flex items-center justify-center p-8 md:p-14">
-
           <Card className="w-full shadow-none border-none">
             <Card>
-
               <div className="mb-8">
                 <h2 className="text-4xl font-black text-slate-900">
                   Create Account
@@ -98,28 +98,15 @@ const RegisterPage = () => {
               </div>
 
               <Form onSubmit={onSubmit} className="flex flex-col gap-5">
-
-             
-                <TextField
-                  isRequired
-                  name="name"
-                  type="text"
-                >
+                <TextField isRequired name="name" type="text">
                   <Label>Name</Label>
 
-                  <Input
-                    className="rounded-xl"
-                    placeholder="Your Name"
-                  />
+                  <Input className="rounded-xl" placeholder="Your Name" />
 
                   <FieldError />
                 </TextField>
 
-              
-                <TextField
-                  name="image"
-                  type="url"
-                >
+                <TextField name="image" type="url">
                   <Label>Image URL</Label>
 
                   <Input
@@ -130,7 +117,6 @@ const RegisterPage = () => {
                   <FieldError />
                 </TextField>
 
-           
                 <TextField
                   isRequired
                   name="email"
@@ -155,7 +141,6 @@ const RegisterPage = () => {
                   <FieldError />
                 </TextField>
 
-               
                 <TextField
                   isRequired
                   minLength={8}
@@ -191,7 +176,6 @@ const RegisterPage = () => {
                   <FieldError />
                 </TextField>
 
-               
                 <Button
                   type="submit"
                   className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold h-12 rounded-xl mt-2"
@@ -199,9 +183,18 @@ const RegisterPage = () => {
                   Get Started
                 </Button>
 
+                <Button
+                onClick={handleGoogleSignin}
+                  variant="outline"
+                  className={
+                    "w-full bg-base-600 hover:bg-red-700 hover:text-white text-black font-semibold h-12 rounded-xl mt-2"
+                  }
+                >
+                  Register with Google <GrGoogle />
+                </Button>
+
                 <p className="text-center text-slate-500 text-sm mt-2">
                   Already have an account?{" "}
-
                   <Link
                     href="/login"
                     className="text-red-600 font-semibold hover:underline"
