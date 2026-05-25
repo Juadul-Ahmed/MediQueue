@@ -2,6 +2,7 @@
 import { authClient } from "@/lib/auth-client";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { FaGraduationCap } from "react-icons/fa6";
 const BookingSessionButton = ({ tutor }) => {
   const { data: session } = authClient.useSession();
@@ -9,8 +10,11 @@ const BookingSessionButton = ({ tutor }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleBook = async () => {
+    if(!phoneNumber){
+      return toast.error("Please enter your phone number")
+    }
     const bookingData = {
-      userID: user?.id,
+      userId: user?.id,
       userName: user?.name,
       userEmail: user?.email,
       tutorId: tutor?._id,
@@ -22,9 +26,24 @@ const BookingSessionButton = ({ tutor }) => {
       availableTiming: tutor?.availableTiming,
       phoneNumber,
     };
-    console.log(bookingData);
+    
+    const res = await fetch("http://localhost:5000/booking",{
+      method: "POST",
+      headers:{
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(bookingData)
+    })
+    
+    
+    
+    const data = await res.json()
+    
+    toast.success("Session Confirmed Successfully")
+    
     
   };
+
 
   return (
     <div>
