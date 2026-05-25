@@ -4,14 +4,16 @@ import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaGraduationCap } from "react-icons/fa6";
+
 const BookingSessionButton = ({ tutor }) => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleBook = async () => {
-    if(!phoneNumber){
-      return toast.error("Please enter your phone number")
+    if (!phoneNumber) {
+      return toast.error("Please enter your phone number");
+      
     }
     const bookingData = {
       userId: user?.id,
@@ -26,24 +28,23 @@ const BookingSessionButton = ({ tutor }) => {
       availableTiming: tutor?.availableTiming,
       phoneNumber,
     };
-    
-    const res = await fetch("http://localhost:5000/booking",{
-      method: "POST",
-      headers:{
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(bookingData)
-    })
-    
-    
-    
-    const data = await res.json()
-    
-    toast.success("Session Confirmed Successfully")
-    
-    
-  };
 
+    const res = await fetch("http://localhost:5000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      return toast.error(data.message || "Booking failed");
+    }
+
+    toast.success("Session Confirmed Successfully");
+    window.location.reload()
+  };
 
   return (
     <div>
@@ -71,7 +72,7 @@ const BookingSessionButton = ({ tutor }) => {
               </Modal.Header>
               <Modal.Body className="p-6">
                 <Surface variant="default">
-                  <form  className="flex flex-col gap-4">
+                  <form className="flex flex-col gap-4">
                     <TextField
                       defaultValue={tutor?.tutorName}
                       className="w-full"
@@ -116,7 +117,19 @@ const BookingSessionButton = ({ tutor }) => {
                       />
                     </TextField>
                     <Modal.Footer>
-                      <Button onClick={handleBook} slot="close">Confirm Session</Button>
+                      <Button
+                        onClick={handleBook}
+                        disabled={tutor.totalSlots <= 0}
+                        className={`bg-red-600 hover:bg-red-700 transition text-white px-6 py-3 rounded-2xl font-semibold ${
+                          tutor.totalSlots <= 0
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                        }`}
+                      >
+                        {tutor.totalSlots <= 0
+                          ? "Fully Booked"
+                          : "Confirm Session"}
+                      </Button>
                     </Modal.Footer>
                   </form>
                 </Surface>

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@heroui/react";
 import BookingSessionButton from "@/components/BookingSessionButton";
+import { FaCheckToSlot } from "react-icons/fa6";
 
 const TutorDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -30,6 +31,7 @@ const TutorDetailsPage = async ({ params }) => {
     institution,
     teachingMode,
     experience,
+    totalSlots,
   } = tutor;
 
   return (
@@ -131,6 +133,17 @@ const TutorDetailsPage = async ({ params }) => {
 
                 <h3 className="font-bold text-lg text-slate-900">
                   {teachingMode}
+                </h3>
+              </div>
+              <div className="bg-slate-50 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-slate-500 text-sm mb-1">
+                     <FaCheckToSlot size={16} />
+                  Total Slots
+                </div>
+
+                <h3 className="font-bold text-lg text-slate-900">
+             
+                  {totalSlots}
                 </h3>
               </div>
             </div>

@@ -12,27 +12,36 @@ import {
   Select,
 } from "@heroui/react";
 import toast from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 export default function AddTutorPage() {
-  const onSubmit = async (e) =>{
-      e.preventDefault()
-      const formData = new FormData(e.currentTarget)
-      const tutor = Object.fromEntries(formData.entries())
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const tutor = Object.fromEntries(formData.entries());
 
-      const res = await fetch("http://localhost:5000/tutor",{
-        method:"POST",
-        headers: {
-          'content-type':'application/json'
-        },
-        body: JSON.stringify(tutor)
-      })
-      
-      const data = await res.json()
-      console.log(data);
+    const tutorData = {
+      ...tutor,
+      userId: user?.id,
+      userName: user?.name,
+      userEmail: user?.email,
+    };
 
-      toast.success('Data added Successfully')
-      
-  }
+    const res = await fetch("http://localhost:5000/tutor", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(tutorData),
+    });
+
+    const data = await res.json();
+    console.log(data);
+
+    toast.success("Data added Successfully");
+  };
 
   return (
     <div className="max-w-4xl mx-auto my-12 px-4">
