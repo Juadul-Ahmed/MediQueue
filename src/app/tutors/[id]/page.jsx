@@ -9,6 +9,8 @@ import {
   Monitor,
   Briefcase,
 } from "lucide-react";
+import { Button } from "@heroui/react";
+import BookingSessionButton from "@/components/BookingSessionButton";
 
 const TutorDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -135,13 +137,11 @@ const TutorDetailsPage = async ({ params }) => {
 
          
             <div className="flex gap-4 mt-10">
-              <button className="bg-red-600 hover:bg-red-700 transition text-white px-6 py-3 rounded-2xl font-semibold">
-                Book Session
-              </button>
+             <BookingSessionButton tutor={tutor} />
 
-              <button className="border border-slate-300 hover:border-red-500 hover:text-red-600 transition px-6 py-3 rounded-2xl font-semibold">
+              <Button className={"border border-slate-300 hover:bg-blue-300 hover:border-blue-600 hover:text-white transition px-6 py-3 rounded-2xl font-semibold"}>
                 Message Tutor
-              </button>
+              </Button>
             </div>
           </div>
         </div>
