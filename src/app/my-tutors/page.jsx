@@ -5,11 +5,18 @@ import { BookOpen, DollarSign, MapPin, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@heroui/react";
 import { EditModal } from "@/components/EditModal";
 import { DeleteTutorAlert } from "@/components/DeleteTutorAlert";
+import { redirect } from "next/navigation";
 
 const MyTutorPage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
+  if (!session?.user?.id) {
+  return (
+   redirect('/login')
+  );
+}
+
 
   const user = session?.user;
 

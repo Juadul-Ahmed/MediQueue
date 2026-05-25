@@ -12,11 +12,19 @@ import {
 import { Button } from "@heroui/react";
 import BookingSessionButton from "@/components/BookingSessionButton";
 import { FaCheckToSlot } from "react-icons/fa6";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const TutorDetailsPage = async ({ params }) => {
   const { id } = await params;
-
-  const res = await fetch(`http://localhost:5000/tutor/${id}`);
+  const {token} = await auth.api.getToken({
+    headers: await headers()
+  })
+  const res = await fetch(`http://localhost:5000/tutor/${id}`,{
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
 
   const tutor = await res.json();
 
