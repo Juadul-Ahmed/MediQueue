@@ -4,6 +4,7 @@ import Image from "next/image";
 import { BookOpen, DollarSign, MapPin, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@heroui/react";
 import { EditModal } from "@/components/EditModal";
+import { DeleteTutorAlert } from "@/components/DeleteTutorAlert";
 
 const MyTutorPage = async () => {
   const session = await auth.api.getSession({
@@ -93,13 +94,7 @@ const MyTutorPage = async () => {
                     
                   <EditModal tutor={tutor} />
 
-                    <Button
-                      variant="danger"
-                      className={"flex-1 rounded-2xl font-semibold"}
-                    >
-                      <Trash2 size={18} />
-                      Delete
-                    </Button>
+                 <DeleteTutorAlert tutor={tutor} />
 
                   </div>
                 </div>
