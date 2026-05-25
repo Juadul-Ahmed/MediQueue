@@ -1,7 +1,31 @@
-'use client'
+"use client";
+import { authClient } from "@/lib/auth-client";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import { useState } from "react";
 import { FaGraduationCap } from "react-icons/fa6";
 const BookingSessionButton = ({ tutor }) => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  const handleBook = async () => {
+    const bookingData = {
+      userID: user?.id,
+      userName: user?.name,
+      userEmail: user?.email,
+      tutorId: tutor?._id,
+      tutorName: tutor?.tutorName,
+      hourlyFee: tutor?.hourlyFee,
+      institution: tutor?.institution,
+      subject: tutor?.subject,
+      sessionStartDate: tutor?.sessionStartDate,
+      availableTiming: tutor?.availableTiming,
+      phoneNumber,
+    };
+    console.log(bookingData);
+    
+  };
+
   return (
     <div>
       <Modal>
@@ -22,12 +46,13 @@ const BookingSessionButton = ({ tutor }) => {
                 </Modal.Icon>
                 <Modal.Heading>Book Your session </Modal.Heading>
                 <p className="mt-1.5 text-sm leading-5 text-muted">
-                  Complete the booking form below to reserve your tutoring session with this tutor.
+                  Complete the booking form below to reserve your tutoring
+                  session with this tutor.
                 </p>
               </Modal.Header>
               <Modal.Body className="p-6">
                 <Surface variant="default">
-                  <form className="flex flex-col gap-4">
+                  <form  className="flex flex-col gap-4">
                     <TextField
                       defaultValue={tutor?.tutorName}
                       className="w-full"
@@ -64,10 +89,15 @@ const BookingSessionButton = ({ tutor }) => {
                       variant="secondary"
                     >
                       <Label>Your Phone</Label>
-                      <Input placeholder="Enter your phone number" />
+
+                      <Input
+                        placeholder="Enter your phone number"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                      />
                     </TextField>
                     <Modal.Footer>
-                      <Button slot="close">Confirm Session</Button>
+                      <Button onClick={handleBook} slot="close">Confirm Session</Button>
                     </Modal.Footer>
                   </form>
                 </Surface>

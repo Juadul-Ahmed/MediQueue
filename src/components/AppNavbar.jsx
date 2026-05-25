@@ -5,17 +5,13 @@ import {
   Link,
   Button,
   Avatar,
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 
 export default function AppNavbar() {
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  console.log(user);
+ 
 
   const handleLogout = async () => {
     await authClient.signOut();
