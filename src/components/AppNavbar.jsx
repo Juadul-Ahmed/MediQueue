@@ -7,6 +7,7 @@ import {
   Avatar,
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import ThemeToggle from "@/app/ThemeToggle";
 
 export default function AppNavbar() {
   const { data: session } = authClient.useSession();
@@ -57,6 +58,8 @@ export default function AppNavbar() {
             </Link>
           </li>
         </ul>
+
+        <ThemeToggle/>
 
         {user ? (
           <>

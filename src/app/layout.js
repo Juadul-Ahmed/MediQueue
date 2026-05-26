@@ -3,6 +3,7 @@ import "./globals.css";
 import AppNavbar from "@/components/AppNavbar";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "next-themes";
 
 const joseFinSans = Josefin_Sans({
 
@@ -19,12 +20,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
+    suppressHydrationWarning
       lang="en"
       className={`${joseFinSans.className}  h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
       <AppNavbar/>
-      {children}
+      <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+          {children}
+      </ThemeProvider>
+      
       <Footer/>
       <Toaster/>
       </body>

@@ -52,7 +52,7 @@ const RegisterPage = () => {
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
 
-        {/* LEFT SIDE */}
+        
         <div className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-red-600 to-red-500 text-white p-14 relative overflow-hidden">
           <div className="relative z-10">
             <h1 className="text-5xl font-black">
@@ -64,7 +64,7 @@ const RegisterPage = () => {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
+       
         <div className="flex items-center justify-center p-8 md:p-14">
 
           <Card className="w-full shadow-none border-none p-6">
@@ -114,6 +114,7 @@ const RegisterPage = () => {
               </Button>
 
               <Button
+              variant="outline"
                 type="button"
                 onClick={handleGoogleSignin}
                 className="w-full border border-slate-300 font-semibold h-12 rounded-xl flex items-center justify-center gap-2"
