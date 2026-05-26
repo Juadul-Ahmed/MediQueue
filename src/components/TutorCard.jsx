@@ -21,6 +21,7 @@ const TutorCard = ({ tutor }) => {
         <Image
           src={photoUrl}
           alt={tutorName}
+          
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />

@@ -72,7 +72,7 @@ export default function AddTutorPage() {
             </div>
 
             <div className="md:col-span-2">
-              <TextField name="photoUrl" type="url" isRequired>
+              <TextField name="photoUrl" type="url" >
                 <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Photo URL
                 </Label>
