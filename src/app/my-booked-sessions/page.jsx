@@ -41,28 +41,28 @@ const MyBookingsPage = async () => {
   const data = await res.json();
 
   return (
-    <div className="min-h-screen bg-slate-50 py-14 px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-14 px-6 transition-colors">
       <div className="max-w-7xl mx-auto">
-        {/* Heading */}
+      
         <div className="mb-12 border-l-4 border-red-600 pl-6">
-          <h1 className="text-4xl md:text-5xl font-black text-slate-900">
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white">
             My <span className="text-red-600">Booked Sessions</span>
           </h1>
 
-          <p className="text-slate-500 mt-3 text-lg">
+          <p className="text-slate-500 dark:text-slate-400 mt-3 text-lg">
             Track all your reserved tutoring sessions in one place.
           </p>
         </div>
 
         {data.length === 0 && (
-          <div className="bg-white rounded-3xl shadow-lg p-14 text-center border border-slate-100">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg p-14 text-center border border-slate-100 dark:border-slate-800">
             <GraduationCap size={70} className="mx-auto text-red-500 mb-5" />
 
-            <h2 className="text-3xl font-bold text-slate-800 mb-3">
+            <h2 className="text-3xl font-bold text-slate-800 dark:text-white mb-3">
               No Bookings Yet
             </h2>
 
-            <p className="text-slate-500 text-lg">
+            <p className="text-slate-500 dark:text-slate-400 text-lg">
               You haven't booked any tutoring sessions yet.
             </p>
           </div>
@@ -72,7 +72,7 @@ const MyBookingsPage = async () => {
           {data.map((booking) => (
             <div
               key={booking._id}
-              className="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-2xl transition duration-300"
+              className="bg-white dark:bg-slate-900 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-2xl transition duration-300"
             >
               <div className="bg-gradient-to-r from-red-500 to-red-600 p-6 text-white">
                 <div className="flex items-center gap-2 mb-2">
@@ -89,7 +89,7 @@ const MyBookingsPage = async () => {
                   <div>
                     <p className="text-sm text-slate-400">Hourly Fee</p>
 
-                    <h3 className="font-bold text-lg text-slate-800">
+                    <h3 className="font-bold text-slate-800 dark:text-white">
                       ${booking.hourlyFee}/hr
                     </h3>
                   </div>
@@ -100,7 +100,7 @@ const MyBookingsPage = async () => {
                   <div>
                     <p className="text-sm text-slate-400">Institution</p>
 
-                    <h3 className="font-bold text-slate-800">
+                    <h3 className="font-bold text-slate-800 dark:text-white">
                       {booking.institution}
                     </h3>
                   </div>
@@ -111,7 +111,7 @@ const MyBookingsPage = async () => {
                   <div>
                     <p className="text-sm text-slate-400">Session Start</p>
 
-                    <h3 className="font-bold text-slate-800">
+                    <h3 className="font-bold text-slate-800 dark:text-white">
                       {booking.sessionStartDate}
                     </h3>
                   </div>
@@ -122,7 +122,7 @@ const MyBookingsPage = async () => {
                   <div>
                     <p className="text-sm text-slate-400">Available Timing</p>
 
-                    <h3 className="font-bold text-slate-800">
+                    <h3 className="font-bold text-slate-800 dark:text-white">
                       {booking.availableTiming}
                     </h3>
                   </div>
@@ -133,7 +133,7 @@ const MyBookingsPage = async () => {
                   <div>
                     <p className="text-sm text-slate-400">Your Phone</p>
 
-                    <h3 className="font-bold text-slate-800">
+                    <h3 className="font-bold text-slate-800 dark:text-white">
                       {booking.phoneNumber}
                     </h3>
                   </div>

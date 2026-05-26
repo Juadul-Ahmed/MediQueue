@@ -47,8 +47,8 @@ const LoginPage = () => {
       });
     };
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center px-4 py-12 transition-colors">
+      <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800">
         <div className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-red-600 to-red-500 text-white p-14 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-72 h-72 bg-black/10 rounded-full blur-3xl" />
@@ -86,11 +86,11 @@ const LoginPage = () => {
           <Card className="w-full shadow-none border-none">
             <Card>
               <div className="mb-8">
-                <h2 className="text-4xl font-black text-slate-900">
+                <h2 className="text-4xl font-black text-slate-900 dark:text-white">
                   Login Account
                 </h2>
 
-                <p className="text-slate-500 mt-2">
+                <p className="text-slate-500 dark:text-slate-400 mt-2">
                   Login to get started with your tutoring journey.
                 </p>
               </div>
@@ -113,7 +113,7 @@ const LoginPage = () => {
                   <Label>Email</Label>
 
                   <Input
-                    className="rounded-xl"
+                    className="rounded-xl dark:bg-slate-800 dark:text-white dark:border-slate-700 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                     placeholder="john@example.com"
                   />
 
@@ -144,7 +144,7 @@ const LoginPage = () => {
                   <Label>Password</Label>
 
                   <Input
-                    className="rounded-xl"
+                    className="rounded-xl dark:bg-slate-800 dark:text-white dark:border-slate-700 placeholder:text-slate-400 dark:placeholder:text-slate-500"
                     placeholder="Enter your password"
                   />
 
@@ -166,13 +166,13 @@ const LoginPage = () => {
                     onClick={handleGoogleSignin}
                     variant="outline"
                     className={
-                      "w-full bg-base-600 hover:bg-red-700 hover:text-white text-black font-semibold h-12 rounded-xl mt-2"
+                      "w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-red-700 hover:text-white text-black dark:text-white font-semibold h-12 rounded-xl mt-2"
                     }
                   >
                     Login with Google <GrGoogle />
                   </Button>
 
-                <p className="text-center text-slate-500 text-sm mt-2">
+                <p className="text-center text-slate-500 dark:text-slate-400 text-sm mt-2">
                   Don't have an account?{" "}
                   <Link
                     href="/register"

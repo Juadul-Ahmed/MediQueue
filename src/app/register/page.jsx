@@ -49,8 +49,8 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center px-4 py-12 transition-colors">
+      <div className="w-full max-w-6xl grid lg:grid-cols-2 bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800">
 
         
         <div className="hidden lg:flex flex-col justify-center bg-gradient-to-br from-red-600 to-red-500 text-white p-14 relative overflow-hidden">
@@ -67,13 +67,13 @@ const RegisterPage = () => {
        
         <div className="flex items-center justify-center p-8 md:p-14">
 
-          <Card className="w-full shadow-none border-none p-6">
+          <Card className="w-full shadow-none border-none p-6 bg-white dark:bg-slate-900">
 
             <div className="mb-8">
-              <h2 className="text-4xl font-black text-slate-900">
+              <h2 className="text-4xl font-black text-slate-900 dark:text-white">
                 Create Account
               </h2>
-              <p className="text-slate-500 mt-2">
+              <p className="text-slate-500 dark:text-slate-400 mt-2">
                 Register to get started
               </p>
             </div>
@@ -81,26 +81,26 @@ const RegisterPage = () => {
             <Form onSubmit={onSubmit} className="flex flex-col gap-5">
 
               <TextField isRequired name="name">
-                <Label>Name</Label>
-                <Input placeholder="Your Name" />
+                <Label  className="dark:text-slate-300">Name</Label>
+                <Input placeholder="Your Name"  className="placeholder:text-slate-400 dark:placeholder:text-slate-500 dark:text-white"/>
                 <FieldError />
               </TextField>
 
               <TextField name="image">
-                <Label>Image URL</Label>
-                <Input placeholder="Image URL" />
+                <Label  className="dark:text-slate-300">Image URL</Label>
+                <Input placeholder="Image URL" className="placeholder:text-slate-400 dark:placeholder:text-slate-500 dark:text-white"/>
               </TextField>
 
               <TextField isRequired name="email">
-                <Label>Email</Label>
-                <Input placeholder="john@example.com" />
+                <Label  className="dark:text-slate-300">Email</Label>
+                <Input placeholder="john@example.com" className="placeholder:text-slate-400 dark:placeholder:text-slate-500 dark:text-white"/>
                 <FieldError />
               </TextField>
 
               <TextField isRequired name="password">
-                <Label>Password</Label>
-                <Input type="password" placeholder="Enter password" />
-                <Description>
+                <Label  className="dark:text-slate-300">Password</Label>
+                <Input type="password" placeholder="Enter password" className="placeholder:text-slate-400 dark:placeholder:text-slate-500 dark:text-white"/>
+                <Description className="text-slate-500 dark:text-slate-400">
                   8+ chars, 1 uppercase, 1 number
                 </Description>
                 <FieldError />
@@ -117,12 +117,12 @@ const RegisterPage = () => {
               variant="outline"
                 type="button"
                 onClick={handleGoogleSignin}
-                className="w-full border border-slate-300 font-semibold h-12 rounded-xl flex items-center justify-center gap-2"
+                className="w-full border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-white font-semibold h-12 rounded-xl flex items-center justify-center gap-2"
               >
                 Register with Google <GrGoogle />
               </Button>
 
-              <p className="text-center text-slate-500 text-sm">
+              <p className="text-center text-slate-500 dark:text-slate-400 text-sm">
                 Already have an account?{" "}
                 <Link href="/login" className="text-red-600 font-semibold">
                   Login

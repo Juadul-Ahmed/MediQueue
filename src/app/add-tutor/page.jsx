@@ -44,13 +44,13 @@ export default function AddTutorPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-12 px-4">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 md:p-10">
+    <div className="max-w-4xl mx-auto my-12 px-4 text-slate-900 dark:text-white">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-6 md:p-10">
         <div className="mb-8 border-b border-slate-100 pb-4">
-          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Add <span className="text-red-600">Tutor Profile</span>
           </h1>
-          <p className="text-slate-500 mt-2 text-sm md:text-base">
+          <p className="text-slate-500 dark:text-slate-400 mt-2 text-sm md:text-base">
             Fill out the credentials below to register a brand new
             <span className="font-semibold text-slate-700">
               {" "}
@@ -63,23 +63,23 @@ export default function AddTutorPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
               <TextField name="tutorName" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Tutor Name
                 </Label>
-                <Input placeholder="John Doe" className="w-full" />
+                <Input placeholder="John Doe" className="w-full placeholder:text-slate-400 dark:placeholder:text-slate-500" />
                 <FieldError className="text-xs text-red-500 mt-1" />
               </TextField>
             </div>
 
             <div className="md:col-span-2">
               <TextField name="photoUrl" type="url" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Photo URL
                 </Label>
                 <Input
                   placeholder="post your image link"
                   type="url"
-                  className="w-full"
+                  className="w-full placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
                 <FieldError className="text-xs text-red-500 mt-1" />
               </TextField>
@@ -89,10 +89,10 @@ export default function AddTutorPage() {
               <Select
                 name="subject"
                 isRequired
-                className="w-full"
+                className="w-full placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 placeholder="Select Subject"
               >
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Subject / Category
                 </Label>
                 <Select.Trigger>
@@ -147,12 +147,12 @@ export default function AddTutorPage() {
 
             <div>
               <TextField name="availableTiming" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Available Days and Time
                 </Label>
                 <Input
                   placeholder="Sun - Thu 5:00 PM - 8:00 PM"
-                  className="w-full"
+                  className="w-full placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
                 <FieldError className="text-xs text-red-500 mt-1" />
               </TextField>
@@ -160,27 +160,27 @@ export default function AddTutorPage() {
 
             <div>
               <TextField name="hourlyFee" type="number" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Hourly Fee
                 </Label>
-                <Input placeholder="500" type="number" className="w-full" />
+                <Input placeholder="500" type="number" className="w-full placeholder:text-slate-400 dark:placeholder:text-slate-500" />
                 <FieldError className="text-xs text-red-500 mt-1" />
               </TextField>
             </div>
 
             <div>
               <TextField name="totalSlots" type="number" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Total Slot
                 </Label>
-                <Input placeholder="10" type="number" className="w-full" />
+                <Input placeholder="10" type="number" className="w-full placeholder:text-slate-400 dark:placeholder:text-slate-500" />
                 <FieldError className="text-xs text-red-500 mt-1" />
               </TextField>
             </div>
 
             <div>
               <TextField name="sessionStartDate" type="date" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Session Start Date
                 </Label>
                 <Input type="date" className="w-full" />
@@ -190,20 +190,20 @@ export default function AddTutorPage() {
 
             <div>
               <TextField name="institution" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Institution
                 </Label>
-                <Input placeholder="Sichuan University" className="w-full" />
+                <Input placeholder="Sichuan University" className="w-full placeholder:text-slate-400 dark:placeholder:text-slate-500" />
                 <FieldError className="text-xs text-red-500 mt-1" />
               </TextField>
             </div>
 
             <div>
               <TextField name="location" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Location (Area/City)
                 </Label>
-                <Input placeholder="Chengdu" className="w-full" />
+                <Input placeholder="Chengdu" className="w-full placeholder:text-slate-400 dark:placeholder:text-slate-500" />
                 <FieldError className="text-xs text-red-500 mt-1" />
               </TextField>
             </div>
@@ -215,7 +215,7 @@ export default function AddTutorPage() {
                 className="w-full"
                 placeholder="Select Mode"
               >
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Teaching Mode
                 </Label>
                 <Select.Trigger>
@@ -240,12 +240,12 @@ export default function AddTutorPage() {
 
             <div className="md:col-span-2">
               <TextField name="experience" isRequired>
-                <Label className="text-sm font-semibold text-slate-700 block mb-1">
+                <Label className="text-sm font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Experience
                 </Label>
                 <TextArea
                   placeholder="3 years teaching experience..."
-                  className="w-full min-h-[100px]"
+                  className="w-full min-h-[100px] placeholder:text-slate-400 dark:placeholder:text-slate-500"
                 />
                 <FieldError className="text-xs text-red-500 mt-1" />
               </TextField>

@@ -25,13 +25,17 @@ export default function RootLayout({ children }) {
       className={`${joseFinSans.className}  h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-      <AppNavbar/>
-      <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+       <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+          
+          <AppNavbar />
+
           {children}
-      </ThemeProvider>
-      
-      <Footer/>
-      <Toaster/>
+
+          <Footer />
+
+          <Toaster />
+
+        </ThemeProvider>
       </body>
 
       

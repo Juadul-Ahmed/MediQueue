@@ -43,11 +43,11 @@ const TutorDetailsPage = async ({ params }) => {
   } = tutor;
 
   return (
-    <div className="min-h-screen bg-slate-50 py-14 px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-14 px-6 transition-colors">
       <div className="max-w-6xl mx-auto">
 
        
-        <div className="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 grid md:grid-cols-2">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl overflow-hidden shadow-xl border border-slate-100 dark:border-slate-800 grid md:grid-cols-2">
 
          
           <div className="relative min-h-[450px]">
@@ -67,89 +67,89 @@ const TutorDetailsPage = async ({ params }) => {
               {subject}
             </div>
 
-            <h1 className="text-4xl font-black text-slate-900 leading-tight">
+            <h1 className="text-4xl font-black text-slate-900 dark:text-white leading-tight">
               {tutorName}
             </h1>
 
-            <p className="text-slate-500 mt-4 leading-relaxed">
+            <p className="text-slate-500 dark:text-slate-400 mt-4 leading-relaxed">
               {experience}
             </p>
 
   
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-8">
 
-              <div className="bg-slate-50 rounded-2xl p-4">
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-4">
                 <div className="flex items-center gap-2 text-slate-500 text-sm mb-1">
                   <DollarSign size={16} />
                   Hourly Fee
                 </div>
 
-                <h3 className="font-bold text-xl text-slate-900">
+                <h3 className="font-bold text-xl text-slate-900 dark:text-white">
                   ${hourlyFee}/hr
                 </h3>
               </div>
 
-              <div className="bg-slate-50 rounded-2xl p-4">
-                <div className="flex items-center gap-2 text-slate-500 text-sm mb-1">
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-1">
                   <MapPin size={16} />
                   Location
                 </div>
 
-                <h3 className="font-bold text-xl text-slate-900">
+                <h3 className="font-bold text-xl text-slate-900 dark:text-white">
                   {location}
                 </h3>
               </div>
 
-              <div className="bg-slate-50 rounded-2xl p-4">
-                <div className="flex items-center gap-2 text-slate-500 text-sm mb-1">
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-1">
                   <Calendar size={16} />
                   Session Starts
                 </div>
 
-                <h3 className="font-bold text-lg text-slate-900">
+                <h3 className="font-bold text-lg text-slate-900 dark:text-white">
                   {sessionStartDate}
                 </h3>
               </div>
 
-              <div className="bg-slate-50 rounded-2xl p-4">
-                <div className="flex items-center gap-2 text-slate-500 text-sm mb-1">
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-1">
                   <Clock3 size={16} />
                   Available Timing
                 </div>
 
-                <h3 className="font-bold text-sm text-slate-900">
+                <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                   {availableTiming}
                 </h3>
               </div>
 
-              <div className="bg-slate-50 rounded-2xl p-4">
-                <div className="flex items-center gap-2 text-slate-500 text-sm mb-1">
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-1">
                   <GraduationCap size={16} />
                   Institution
                 </div>
 
-                <h3 className="font-bold text-sm text-slate-900">
+                <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                   {institution}
                 </h3>
               </div>
 
-              <div className="bg-slate-50 rounded-2xl p-4">
-                <div className="flex items-center gap-2 text-slate-500 text-sm mb-1">
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-4bg-slate-50 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-1">
                   <Monitor size={16} />
                   Teaching Mode
                 </div>
 
-                <h3 className="font-bold text-lg text-slate-900">
+                <h3 className="font-bold text-sm text-slate-900 dark:text-white">
                   {teachingMode}
                 </h3>
               </div>
-              <div className="bg-slate-50 rounded-2xl p-4">
-                <div className="flex items-center gap-2 text-slate-500 text-sm mb-1">
+              <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-1">
                      <FaCheckToSlot size={16} />
                   Total Slots
                 </div>
 
-                <h3 className="font-bold text-lg text-slate-900">
+                <h3 className="font-bold text-sm text-slate-900 dark:text-white">
              
                   {totalSlots}
                 </h3>
@@ -168,15 +168,15 @@ const TutorDetailsPage = async ({ params }) => {
         </div>
 
      
-        <div className="bg-white mt-10 rounded-3xl p-8 shadow-lg border border-slate-100">
+        <div className="bg-white dark:bg-slate-900 mt-10 rounded-3xl p-8 shadow-lg border border-slate-100 dark:border-slate-800">
           <div className="flex items-center gap-3 mb-5">
             <Briefcase className="text-red-600" />
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
               Teaching Experience
             </h2>
           </div>
 
-          <p className="text-slate-600 leading-relaxed text-lg">
+          <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
             {experience}
           </p>
         </div>
