@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaStar, FaBookOpen } from "react-icons/fa";
 
 async function getTutors() {
-  const res = await fetch("http://localhost:5000/tutor/all");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutor/all`);
 
   return res.json();
 }

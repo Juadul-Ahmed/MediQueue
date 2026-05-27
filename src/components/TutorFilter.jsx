@@ -24,7 +24,7 @@ const TutorFilter = ({ setTutors }) => {
     }
 
     const res = await fetch(
-      `http://localhost:5000/tutor/all?${params.toString()}`
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/tutor/all?${params.toString()}`
     );
 
     const data = await res.json();

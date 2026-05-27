@@ -9,7 +9,7 @@ export default function TutorsPage() {
   const [tutors, setTutors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/tutor/all")
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutor/all`)
       .then((res) => res.json())
       .then((data) => {
         setTutors(data);

@@ -18,7 +18,7 @@ export function EditModal({ tutor, onUpdated }) {
     const formData = new FormData(e.currentTarget);
     const updatedTutor = Object.fromEntries(formData.entries());
 
-    const res = await fetch(`http://localhost:5000/tutor/${tutor._id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutor/${tutor._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

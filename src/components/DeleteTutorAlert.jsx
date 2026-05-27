@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 export function DeleteTutorAlert({ tutor }) {
   const handleDelete = async () => {
     const res = await fetch(
-      `http://localhost:5000/tutor/${tutor._id}`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/tutor/${tutor._id}`,
       {
         method: "DELETE",
       }
