@@ -17,13 +17,13 @@ import { headers } from "next/headers";
 
 const TutorDetailsPage = async ({ params }) => {
   const { id } = await params;
-  // const {token} = await auth.api.getToken({
-  //   headers: await headers()
-  // })
+  const {token} = await auth.api.getToken({
+    headers: await headers()
+  })
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/tutor/${id}`,{
-    // headers: {
-    //   authorization: `Bearer ${token}`
-    // }
+    headers: {
+      authorization: `Bearer ${token}`
+    }
   });
 
   const tutor = await res.json();
